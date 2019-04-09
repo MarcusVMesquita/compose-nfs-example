@@ -21,7 +21,7 @@ services:
   adminer:
     image: adminer
     ports:
-      - 8099:8080
+      - 8080:8080
 
 volumes:
   nfs_vol:
@@ -29,5 +29,5 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "rw,hard,nolock,rsize=65536,wsize=65536" # pode ser personalizada conforme necessidade
-      device: "addr=<nfs_ip>:/path_on_nfs"
+      device: "addr=<nfs_ip>:/path/on/nfs"
 
