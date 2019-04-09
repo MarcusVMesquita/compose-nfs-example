@@ -1,0 +1,33 @@
+version: '3.6'
+
+services:
+
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_DATABASE=nfsdata
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
+      - MYSQL_ROOT_PASSWORD=pass
+    volumes:
+      - type: volume
+        source: nfs_vol
+        target: /var/lib/mysql
+    ports:
+      -   3306:3306
+    user: root
+
+
+  adminer:
+    image: adminer
+    ports:
+      - 8099:8080
+
+volumes:
+  nfs_vol:
+    driver: local
+    driver_opts:
+      type: "nfs"
+      o: "rw,hard,nolock,rsize=65536,wsize=65536" # pode ser personalizada conforme necessidade
+      device: "addr=<nfs_ip>:/path_on_nfs"
+
