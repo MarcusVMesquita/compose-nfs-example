@@ -28,6 +28,6 @@ volumes:
     driver: local
     driver_opts:
       type: "nfs"
-      o: "rw,hard,nolock,rsize=65536,wsize=65536" # pode ser personalizada conforme necessidade
-      device: "addr=<nfs_ip>:/path/on/nfs"
+      o: "addr=addr=<nfs_ip>,rw,hard,nolock,rsize=65536,wsize=65536" # pode ser personalizada conforme necessidade
+      device: ":/path/on/nfs"
 
